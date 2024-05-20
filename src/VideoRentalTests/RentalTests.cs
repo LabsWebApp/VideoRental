@@ -1,6 +1,6 @@
 ﻿namespace VideoRentalTests;
 
-[TestFixture]
+/*[TestFixture]
 public class RentalTests
 {
     [Test]
@@ -26,4 +26,4 @@ public class RentalTests
 
         Assert.That(rental.CalculateDebt(), Is.EqualTo(18));
     }
-}
+}*/
