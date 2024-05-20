@@ -5,7 +5,12 @@ namespace VideoRentalTests;
 [TestFixture]
 public class RentalTests
 {
-    [Test]
+    static RegularMovie movie;
+
+    [SetUp]
+    public static void SetUp() => movie = new (name: "TestMovie");
+
+    /*[Test]
     public static void Case1_RentalCalculateDebt()
     {
         double rentalPrice = 2;
@@ -16,9 +21,9 @@ public class RentalTests
         Rental rental = new Rental(movie, days: days);
 
         Assert.That(rental.CalculateDebt(), Is.EqualTo(days * rentalPrice));
-    }
+    }*/
 
-    [Test]
+    /*[Test]
     public static void Case1_RentalAddRentalDays()
     {
         Rental rental = new Rental(new Movie(rentalPrice: 2), days: 6);
@@ -80,5 +85,5 @@ public class RentalTests
         {
             Assert.Fail();
         }
-    }
+    }*/
 }

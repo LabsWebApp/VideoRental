@@ -1,6 +1,4 @@
-﻿
-
-namespace VideoRental;
+﻿namespace VideoRental;
 
 public class Rental
 {
