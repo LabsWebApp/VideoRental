@@ -15,20 +15,20 @@ public class RentalTests
 
         Rental rental = new Rental(movie, days: days);
 
-        Assert.That(days * rentalPrice, Is.EqualTo(rental.CalculateDebt()));
+        Assert.That(rental.CalculateDebt(), Is.EqualTo(days * rentalPrice));
     }
 
-    /*[Test]
+    [Test]
     public static void Case1_RentalAddRentalDays()
     {
         Rental rental = new Rental(new Movie(rentalPrice: 2), days: 6);
 
         rental.AddRentalDays();
-        Assert.AreEqual(rental.CalculateDebt(), 2 * 7);
+        Assert.That(rental.CalculateDebt(), Is.EqualTo(2 * 7));
 
         rental.AddRentalDays(2);
-        Assert.AreEqual(rental.CalculateDebt(), 2 * 9);
-    }*/
+        Assert.That(rental.CalculateDebt(), Is.EqualTo(2 * 9));
+    }
 
     /*[Test]
     public static void Case1_RentalSubtractRentalDays()
