@@ -1,3 +1,5 @@
+using VideoRental;
+
 namespace VideoRentalTests;
 
 [TestFixture]
@@ -13,7 +15,7 @@ public class RentalTests
 
         Rental rental = new Rental(movie, days: days);
 
-        Assert.AreEqual(rental.CalculateDebt(), days * rentalPrice);
+        Assert.That(days * rentalPrice, Is.EqualTo(rental.CalculateDebt()));
     }
 
     /*[Test]
