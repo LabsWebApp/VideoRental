@@ -42,7 +42,7 @@ public class RentalTests
         Assert.That(rental.CalculateDebt(), Is.EqualTo(2 * 3));
     }
 
-    /*[Test]
+    [Test]
     public static void Case1_ExpectedRentalDaysException1()
     {
         try
@@ -55,15 +55,15 @@ public class RentalTests
         }
         catch (RentalDaysException e)
         {
-            Assert.AreEqual(e.Days, -1);
+            Assert.That(e.Days, Is.EqualTo(-1));
         }
         catch (Exception)
         {
             Assert.Fail();
         }
-    }*/
+    }
 
-    /*[Test]
+    [Test]
     public static void Case1_ExpectedRentalDaysException2()
     {
         try
@@ -74,11 +74,11 @@ public class RentalTests
         }
         catch (RentalDaysException e)
         {
-            Assert.AreEqual(e.Days, -6);
+            Assert.That(e.Days, Is.EqualTo(-6));
         }
         catch (Exception)
         {
             Assert.Fail();
         }
-    }*/
+    }
 }
