@@ -30,17 +30,17 @@ public class RentalTests
         Assert.That(rental.CalculateDebt(), Is.EqualTo(2 * 9));
     }
 
-    /*[Test]
+    [Test]
     public static void Case1_RentalSubtractRentalDays()
     {
         Rental rental = new Rental(new Movie(rentalPrice: 2), days: 6);
 
-        rental.SubstractRentalDays();
-        Assert.AreEqual(rental.CalculateDebt(), 2 * 5);
+        rental.SubtractRentalDays();
+        Assert.That(rental.CalculateDebt(), Is.EqualTo(2 * 5));
 
-        rental.SubstractRentalDays(2);
-        Assert.AreEqual(rental.CalculateDebt(), 2 * 3);
-    }*/
+        rental.SubtractRentalDays(2);
+        Assert.That(rental.CalculateDebt(), Is.EqualTo(2 * 3));
+    }
 
     /*[Test]
     public static void Case1_ExpectedRentalDaysException1()
@@ -49,7 +49,7 @@ public class RentalTests
         {
             Rental rental = new Rental(new Movie(rentalPrice: 2), days: 6);
 
-            rental.SubstractRentalDays(7);
+            rental.SubtractRentalDays(7);
 
             Assert.Fail();
         }
