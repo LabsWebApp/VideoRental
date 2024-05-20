@@ -1,89 +1,29 @@
-using VideoRental;
-
-namespace VideoRentalTests;
+﻿namespace VideoRentalTests;
 
 [TestFixture]
 public class RentalTests
 {
-    static RegularMovie movie;
-
-    [SetUp]
-    public static void SetUp() => movie = new (name: "TestMovie");
-
     [Test]
-    public static void Case1_RentalCalculateDebt()
+    public static void Test2_RegularMovie()
     {
-        //double rentalPrice = 2;
-        int days = 6;
+        Rental rental = new(new RegularMovie("Film1"), 6);
 
-        //Movie movie = new Movie(rentalPrice: rentalPrice);
-
-        Rental rental = new (movie, days: days);
-
-        Assert.That(rental.CalculateDebt(), Is.EqualTo(days * movie.RentalPrice));
+        Assert.That(rental.CalculateDebt(), Is.EqualTo(12));
     }
 
     [Test]
-    public static void Case1_RentalAddRentalDays()
+    public static void Test2_ChildrenMovie()
     {
-        Rental rental = new(movie, days: 6);
+        Rental rental = new(new ChildrenMovie("Film2"), 6);
 
-        rental.AddRentalDays();
-        Assert.That(rental.CalculateDebt(), Is.EqualTo(2 * 7));
-
-        rental.AddRentalDays(2);
-        Assert.That(rental.CalculateDebt(), Is.EqualTo(2 * 9));
+        Assert.That(rental.CalculateDebt(), Is.EqualTo(6));
     }
 
     [Test]
-    public static void Case1_RentalSubtractRentalDays()
+    public static void Test2_NewReleaseMovie()
     {
-        Rental rental = new(movie, days: 6);
+        Rental rental = new(new NewReleaseMovie("Film3"), 6);
 
-        rental.SubtractRentalDays();
-        Assert.That(rental.CalculateDebt(), Is.EqualTo(2 * 5));
-
-        rental.SubtractRentalDays(2);
-        Assert.That(rental.CalculateDebt(), Is.EqualTo(2 * 3));
-    }
-
-    [Test]
-    public static void Case1_ExpectedRentalDaysException1()
-    {
-        try
-        {
-            Rental rental = new(movie, days: 6);
-
-            rental.SubtractRentalDays(7);
-
-            Assert.Fail();
-        }
-        catch (RentalDaysException e)
-        {
-            Assert.That(e.Days, Is.EqualTo(-1));
-        }
-        catch (Exception)
-        {
-            Assert.Fail();
-        }
-    }
-
-    [Test]
-    public static void Case1_ExpectedRentalDaysException2()
-    {
-        try
-        {
-            Rental rental = new(movie, days: -6);
-
-            Assert.Fail();
-        }
-        catch (RentalDaysException e)
-        {
-            Assert.That(e.Days, Is.EqualTo(-6));
-        }
-        catch (Exception)
-        {
-            Assert.Fail();
-        }
+        Assert.That(rental.CalculateDebt(), Is.EqualTo(18));
     }
 }
