@@ -23,7 +23,7 @@ public class Rental
         }
     }
 
-    public double CalculateDebt() => _movie.RentalPrice * _days;
+    public double CalculateDebit() => _movie.RentalPrice * _days;
 
     public void AddRentalDays(int d = 1) => Days += d;
     public void SubtractRentalDays(int d = 1) => Days -= d;

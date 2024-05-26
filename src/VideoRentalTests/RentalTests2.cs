@@ -1,7 +1,7 @@
 ﻿namespace VideoRentalTests;
 
 [TestFixture]
-public class RentalTests
+public class RentalTests2
 {
     [Test]
     public static void Test2_RegularMovie()
@@ -9,7 +9,7 @@ public class RentalTests
         // Rental rental = new(new RegularMovie("Film1"), 6);
         Rental rental = new(Movie.RegularMovie("Film1"), 6);
 
-        Assert.That(rental.CalculateDebt(), Is.EqualTo(12));
+        Assert.That(rental.CalculateDebit(), Is.EqualTo(12));
     }
 
     [Test]
@@ -17,7 +17,7 @@ public class RentalTests
     {
         Rental rental = new(Movie.ChildrenMovie("Film2"), 6);
 
-        Assert.That(rental.CalculateDebt(), Is.EqualTo(6));
+        Assert.That(rental.CalculateDebit(), Is.EqualTo(6));
     }
 
     [Test]
@@ -25,6 +25,6 @@ public class RentalTests
     {
         Rental rental = new(Movie.NewReleaseMovie("Film3"), 6);
 
-        Assert.That(rental.CalculateDebt(), Is.EqualTo(18));
+        Assert.That(rental.CalculateDebit(), Is.EqualTo(18));
     }
 }

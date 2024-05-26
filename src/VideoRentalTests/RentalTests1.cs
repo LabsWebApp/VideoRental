@@ -1,12 +1,12 @@
 namespace VideoRentalTests;
 
 [TestFixture]
-public class OldRentalTests
+public class RentalTests1
 {
     private static readonly Movie Movie = Movie.RegularMovie("Movie Name");
 
     [Test]
-    public static void Case1_RentalCalculateDebt()
+    public static void Case1_RentalCalculateDebit()
     {
         //double rentalPrice = 2;
         int days = 6;
@@ -15,7 +15,7 @@ public class OldRentalTests
 
         Rental rental = new (Movie, days: days);
 
-        Assert.That(rental.CalculateDebt(), Is.EqualTo(days * Movie.RentalPrice));
+        Assert.That(rental.CalculateDebit(), Is.EqualTo(days * Movie.RentalPrice));
     }
 
     [Test]
@@ -24,10 +24,10 @@ public class OldRentalTests
         Rental rental = new(Movie, days: 6);
 
         rental.AddRentalDays();
-        Assert.That(rental.CalculateDebt(), Is.EqualTo(2 * 7));
+        Assert.That(rental.CalculateDebit(), Is.EqualTo(2 * 7));
 
         rental.AddRentalDays(2);
-        Assert.That(rental.CalculateDebt(), Is.EqualTo(2 * 9));
+        Assert.That(rental.CalculateDebit(), Is.EqualTo(2 * 9));
     }
 
     [Test]
@@ -36,10 +36,10 @@ public class OldRentalTests
         Rental rental = new(Movie, days: 6);
 
         rental.SubtractRentalDays();
-        Assert.That(rental.CalculateDebt(), Is.EqualTo(2 * 5));
+        Assert.That(rental.CalculateDebit(), Is.EqualTo(2 * 5));
 
         rental.SubtractRentalDays(2);
-        Assert.That(rental.CalculateDebt(), Is.EqualTo(2 * 3));
+        Assert.That(rental.CalculateDebit(), Is.EqualTo(2 * 3));
     }
 
     [Test]
