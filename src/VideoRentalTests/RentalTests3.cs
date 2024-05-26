@@ -4,7 +4,7 @@
 public class RentalTests3
 {
     [Test]
-    public static void Test2_CustomerCalculateDebit()
+    public static void Test3_CustomerCalculateDebit()
     {
         Customer customer = new(name: "Петя");
         customer.Rentals.Add(new Rental(Movie.RegularMovie("Movie1"), 6));
