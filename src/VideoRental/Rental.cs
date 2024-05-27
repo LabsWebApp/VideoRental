@@ -11,10 +11,10 @@ public class Rental
         Days = days;
     }
 
-    private int Days
+    public int Days
     {
         get => _days;
-        set
+        private set
         {
             if (value < 0)
                 throw new RentalDaysException(value);
@@ -22,6 +22,8 @@ public class Rental
             _days = value;
         }
     }
+
+    internal Movie Movie => _movie;
 
     public double CalculateDebit() => _movie.RentalPrice * _days;
 

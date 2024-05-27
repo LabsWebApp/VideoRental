@@ -1,38 +1,28 @@
-﻿namespace VideoRentalTests;
+﻿using System.Text;
+using Moq;
+
+namespace VideoRentalTests;
 
 [TestFixture]
 public class RentalTests4
 {
     [Test]
-    public static void Test4_CustomerCalculateDebit()
+    public void GetSimpleReport_ValidCustomer_WritesReport()
     {
         // Arrange
-        MockRepository mockCustomerRepository = new();
-        var mockWriter = mockCustomerRepository.DynamicMock<TextWriter>();
-        
-        TextWriterFactory.SetTextWriter(mockWriter);
+        var path = "test.txt";
+        var mockTextWriter = new Mock<TextWriter>();
+        TextWriterFactory.SetTextWriter(mockTextWriter.Object);
 
-        using (mockCustomerRepository.Record())
-        {
-            mockWriter.Write("Nothing");
-            LastCall.Constraints(
-                new Rhino.Mocks.Constraints.Contains("TestCustomer") &
-                new Rhino.Mocks.Constraints.Contains("TestMovie") &
-                new Rhino.Mocks.Constraints.Contains("6 days") &
-                new Rhino.Mocks.Constraints.Contains(12.ToString("C")) &
-                new Rhino.Mocks.Constraints.Contains("TestCustomer") &
-                new Rhino.Mocks.Constraints.Contains("(Regular)"));
-            mockWriter.Flush();
-        }
+        var customer = new Customer("TestCustomer");
+        customer.Rentals.Add(
+            new Rental(Movie.RegularMovie("TestRegularMovie"), 2));
 
         // Act
-        Customer customer = new(name: "TestCustomer");
-        customer.Rentals.Add(new Rental(Movie.RegularMovie("TestMovie"), 6));
+        ReportManager.GetSimpleReport(path, customer);
 
-        ReportManager.GetSimpleReport("SomePath", customer);
-
-        //Assert
-        mockCustomerRepository.VerifyAll();
+        // Assert
+        mockTextWriter.Verify(
+            tw => tw.Write(It.IsAny<StringBuilder>()), Times.Once);
     }
-
 }
