@@ -4,7 +4,7 @@ namespace VideoRental;
 
 public static class ReportManager
 {
-    public static void GetSimpleReport(string path, Customer customer)
+    public static string GetSimpleReport(string path, Customer customer)
     {
         if (customer == null) throw new NullReferenceException(
             $"Param: {nameof(customer)} is null.");
@@ -18,7 +18,9 @@ public static class ReportManager
         sb.AppendLine($"Сумма долга клиента: {customer.CalculateDebit()}")
             .AppendLine(new string('-', 20));
 
-        using var textWriter = TextWriterFactory.GetTextWriter(path);
-        textWriter.Write(sb);
+        using (var textWriter = TextWriterFactory.GetTextWriter(path))
+            textWriter.Write(sb);
+
+        return sb.ToString();
     }
 }

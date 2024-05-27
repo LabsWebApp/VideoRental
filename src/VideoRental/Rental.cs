@@ -23,7 +23,7 @@ public class Rental
         }
     }
 
-    internal Movie Movie => _movie;
+    public Movie Movie => _movie;
 
     public double CalculateDebit() => _movie.RentalPrice * _days;
 
