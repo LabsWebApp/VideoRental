@@ -1,6 +1,4 @@
-﻿using System.Text;
-
-namespace VideoRental;
+﻿namespace VideoRental;
 
 public static class TextWriterFactory
 {
@@ -9,6 +7,6 @@ public static class TextWriterFactory
     public static TextWriter GetTextWriter(string path) =>
         _textWriter ?? new StreamWriter(path, true);
 
-    public static void SetTextWriter(TextWriter textWriter) =>
+    public static void SetTextWriter(TextWriter? textWriter) =>
         _textWriter = textWriter;
 }

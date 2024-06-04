@@ -68,6 +68,7 @@ public class RentalTests1
     {
         try
         {
+            // ReSharper disable once UnusedVariable
             Rental rental = new(Movie, days: -6);
 
             Assert.Fail();

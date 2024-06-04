@@ -1,9 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="MovieType.cs">
+			<DependentUpon>Movie.cs</DependentUpon>
+		</None>
+		<None Include="RentalDaysException.cs">
+			<DependentUpon>Rental.cs</DependentUpon>
+		</None>
+	</ItemGroup>
 
 </Project>

@@ -5,7 +5,8 @@ customer.Rentals.Add(new Rental(Movie.NewReleaseMovie("Movie2"), 2));
 //WriteLine($"Клиент с именем {customer.Name} должен нам {customer.CalculateDebit():C}.");
 //WriteLine(new string('*', 20));
 
-WriteLine(ReportManager.GetSimpleReport("report.txt", customer));
+WriteLine(ReportManager.GetTxtSimpleReport(customer));
+ReportManager.GetSimpleReport("test.txt", customer);
 
 // Delay
 ReadKey();
